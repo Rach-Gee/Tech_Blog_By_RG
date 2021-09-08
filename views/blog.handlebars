@@ -1,11 +1,11 @@
-<h1>{{title}}</h1>
+<h1 class="text-center">{{title}}</h1>
 </div>
 
-<h3 class="ms-3">{{content}}</h3>
-<p class="ms-3">by {{user.username}}
+<h3 class="ms-3 text-center">{{content}}</h3>
+<p class="ms-3 text-center">by {{user.username}}
 <p>
   {{#if logged_in}}
-<div class="col-md-6">
+<div class="col-md-12">
   <form class="form new-comment-form">
     <div class="form-group">
       <label for="comment-text">Leave a comment below</label>
@@ -19,12 +19,12 @@
 <script src="/js/comment.js"></script>
 {{/if}}
 
-<h3>Comments:</h3>
+<p class='m-3'>Comments:</p>
 
 {{#each comments as |comment|}}
 <div class="card mx-3 py-0">
   <div class="card-header">
-    <h3 class="commentheader">Posted by {{user.username}} at {{comment.created_date}}</h3>
+    <h3 class="commentheader">Posted by {{user.username}} on {{format_date comment.created_date}}</h3>
   </div>
   <div class="card-body">
     <p class="card-text">{{comment.content}}</h3>
