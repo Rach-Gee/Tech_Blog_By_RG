@@ -9,11 +9,11 @@
      {{#if blogs.length}}
   <div class="col-md-6 project-list">
     <h3>Blogs:</h3>
-
+<br>
     {{#each blogs as |blog|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h3><a href="/blog/{{blog.id}}">{{blog.title}}</a></h3>
+        <h3 class="bloglist"><a href="/blog/{{blog.id}}">{{blog.title}}</a></h3>
       </div>
     </div>
     {{/each}}

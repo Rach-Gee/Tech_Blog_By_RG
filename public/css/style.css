@@ -33,6 +33,18 @@
   padding: 1%
 }
 
+a {
+  text-decoration: none;
+}
+
+h3 a:visited {
+  color: var(--light-dark);
+}
+
+h3 a:hover {
+  color: var(--dark);
+}
+
 body {
   background-color: var(--primary);
   margin: 0;
