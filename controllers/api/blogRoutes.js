@@ -17,26 +17,28 @@ router.post('/', withAuth, async (req, res) => {
 });
 
 router.put('/:id', withAuth, async (req, res) => {
-  try { 
-    const title = req.body.title
-    const content = req.body.content
-    
-    const blogData = await Blog.findByPk(req.params.id)
-  
+  try {
+    const title = req.body.title;
+    const content = req.body.content;
+
+    const blogData = await Blog.findByPk(req.params.id);
+
     if (blogData === null) {
 
-      res.status(400).json("Not found!")
-      return 
+      res.status(400).json('Not found!');
+      return;
     }
-    
-    blogData.title = (title !== undefined) ? title : blogData.title
-    blogData.content = (content !== undefined) ? content : blogData.content
 
-    const newBlogData = await blogData.save()
-    res.json(newBlogData)
+    blogData.title = (title !== undefined) ? title : blogData.title;
+    blogData.content = (content !== undefined) ? content : blogData.content;
+
+    const newBlogData = await blogData.save();
+    res.json(newBlogData);
+  } catch (err) {
+    console.error(err);
+    res.status(400).json(err);
   }
-  catch (err) {}
-})
+});
 
 router.delete('/:id', withAuth, async (req, res) => {
   try {
@@ -45,12 +47,12 @@ router.delete('/:id', withAuth, async (req, res) => {
         id: req.body.blog_id
       }
     });
-    
-    res.status(200).json("success!");
+
+    res.status(200).json('success!');
   } catch (err) {
-    console.error(err)
+    console.error(err);
     res.status(400).json(err);
-    
+
   }
 });
 

@@ -6,27 +6,24 @@
 
 <div class="row mt-4">
   <div class="col-md-6">
-     {{#if blogs.length}}
-  <div class="col-md-6 project-list">
-    <h3>Your blogs:</h3>
-<br>
-    {{#each blogs as |blog|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h3 class="bloglist"><a href="/blog/{{blog.id}}">{{blog.title}}</a></h3>
+    {{#if blogs.length}}
+    <div class="col-md-6 project-list">
+      <h3>Your blogs:</h3>
+      <br>
+      {{#each blogs as |blog|}}
+      <div class="row mb-2">
+        <div class="col-md-8">
+          <h3 class="bloglist"><a href="/blog/{{blog.id}}">{{blog.title}}</a></h3>
+        </div>
       </div>
+      {{/each}}
     </div>
-    {{/each}}
-  </div>
-  {{else}}
-  <div>
-    <h2>No blogs avalible!</h2>
-  </div>
-  {{/if}}
-<br>
-<br>
-<br>
-<a class="newpost" href="/createnew">+ New Post</a>
-
-
-  
+    {{else}}
+    <div>
+      <h2>No blogs avalible!</h2>
+    </div>
+    {{/if}}
+    <br>
+    <br>
+    <br>
+    <a class="newpost" href="/createnew">+ New Post</a>
