@@ -15,7 +15,7 @@ const loginFormHandler = async (event) => {
 
     if (response.ok) {
       // If successful, redirect the browser to the blog page
-      document.location.replace('/blog');
+      document.location.replace('/');
     } else {
       alert(response.statusText);
     }

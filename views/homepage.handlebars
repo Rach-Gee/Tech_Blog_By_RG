@@ -1,21 +1,30 @@
-<!-- Loop over each object in the projects array -->
-{{#each blogs as |blog| }}
-<div class="row mb-2">
-  <div class="col-md-8">
-    <h2>
-      <a href="/blog/{{blog.id}}">{{blog.name}}</a>
-    </h2>
-    <p>Created by {{blog.user.name}} on {{format_date blog.date_created}}</p>
-  </div>
-  <div class="col-md-7">
-    <p>
-      {{blog.description}}
-    </p>
+<div class="row">
+  <div class="col-auto">
+    <h2>Blogs</h2>
   </div>
 </div>
-{{/each}}
+<div class="row mt-4">
+  {{#if blogs.length}}
+  <div class="col-md-6 project-list">
+    {{#each blogs as |blog|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h3><a href="/blog/{{blog.id}}">{{blog.title}}</a></h3>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{else}}
+  <div>
+    <h2> No blogs yet!</h2>
+  </div>
+  {{/if}}
+</div>
+<br>
+<br>
+<br>
 
 {{#if logged_in}}
-   <a href="/createnew">+ New Post</a>
+<a class="newpost" href="/createnew">+ New Post</a>
 </div>
 {{/if}}

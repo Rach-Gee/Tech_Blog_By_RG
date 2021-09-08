@@ -11,6 +11,23 @@
   box-sizing: border-box;
 }
 
+.commentheader {
+  color: var(--primary);
+}
+
+.newpost {
+  border: solid var(--light-dark);
+  background-color: var(--light-dark);
+  color: var(--primary);
+  border-radius: 2px;
+  padding: 10px;
+  margin-left: 50%;
+}
+
+.new-comment-form {
+  margin-left: 4%;
+}
+
 body {
   background-color: var(--primary);
   margin: 0;
