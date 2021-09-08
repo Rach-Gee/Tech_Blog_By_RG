@@ -8,7 +8,7 @@ router.post('/login', async (req, res) => {
 
     if (!userData) {
       res
-      alert('Incorrect email')
+      alert('Incorrect email or password, please try again')
         .status(400)
         .json({ message: 'Incorrect email or password, please try again' });
       return;
@@ -18,7 +18,7 @@ router.post('/login', async (req, res) => {
 
     if (!validPassword) {
       res
-      alert('Incorrect password')
+      alert('Incorrect email or password, please try again')
         .status(400)
         .json({ message: 'Incorrect email or password, please try again' });
       return;

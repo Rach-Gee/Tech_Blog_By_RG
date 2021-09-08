@@ -3,7 +3,7 @@ const { User, Blog, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 // Prevent non logged in users from viewing the homepage
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const blogData = await Blog.findAll({
       include: [
@@ -71,7 +71,12 @@ router.get('/dashboard', withAuth, async (req, res) => {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Blog }],
+      include: [
+        {
+          model: Blog,
+          include: [User]
+        }
+      ],
     });
 
     const user = userData.get({ plain: true });
@@ -85,7 +90,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
-router.get('/blog/:id', withAuth, async (req, res) => {
+router.get('/blog/:id', async (req, res) => {
   try {
     const blogData = await Blog.findByPk(req.params.id, {
       include: [
@@ -94,7 +99,6 @@ router.get('/blog/:id', withAuth, async (req, res) => {
           include: [User]
         },
         {
-          
           model: User,
           attributes: ['username'],
         },

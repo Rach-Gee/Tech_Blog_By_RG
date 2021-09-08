@@ -1,34 +1,34 @@
 const commentAdd = async (event) => {
-    event.preventDefault();
-    const content = document.querySelector('#comment-text').value.trim();
+  event.preventDefault();
+  const content = document.querySelector('#comment-text').value.trim();
+
+  const blog_id = window.location.toString().split('/')[
+    window.location.toString().split('/').length - 1
+  ];
   
-    const blog_id = window.location.toString().split('/')[
-      window.location.toString().split('/').length - 1
-    ];
+  console.log(blog_id)
+
+  if (content) {
     
-    console.log(blog_id)
+    const response = await fetch(`/api/comments`, {
+      method: 'POST',
+      body: JSON.stringify({ content, blog_id }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
-    if (content) {
+    if (response.ok) {
+      document.location.replace(`${blog_id}`);
       
-      const response = await fetch(`/api/comments`, {
-        method: 'POST',
-        body: JSON.stringify({ content, blog_id }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-  
-      if (response.ok) {
-        document.location.replace('/');
-        
-      } else {
-        alert('Failed to create comment');
-      }
+    } else {
+      alert('Failed to create comment');
     }
-  };
-  
+  }
+};
 
-  
-  document
-    .querySelector('.new-comment-form')
-    .addEventListener('submit', commentAdd);
+
+
+document
+  .querySelector('.new-comment-form')
+  .addEventListener('submit', commentAdd);

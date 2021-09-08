@@ -2,14 +2,35 @@
 </div>
 
 <h3 class="ms-3 text-center">{{content}}</h3>
-<p class="ms-3 text-center">by {{user.username}}
+<p class="ms-3 text-center">Posted by {{user.username}}
 <p>
+{{#if is_current_logged_in_user_author}}
+<div class="col-md-12">
+  <form class="form edit-form">
+    <div class="form-group"></div>
+    <label for="blog-title">Update blog title:</label>
+    <input class="form-input comment-text" type="text" id="blog-title" name="blog-title" value="{{title}}" />
+    <div class="form-group"></div>
+    <label for="blog-content">Update blog content:</label>
+    <textarea class="form-input comment-text updateContent" type="text" id="blog-content"
+      name="blog-content">{{content}}</textarea>
+<div class="form-group">
+  <button id="editbutton" type="submit" class="btn btn-primary">Edit post</button>
+</div>
+<div class="form-group">
+  <button id="deletebutton" type="submit" class="btn btn-primary">Delete</button>
+</div>
+</div>
+</form>
+<script src="/js/editpost.js"></script>
+{{/if}}
+
   {{#if logged_in}}
 <div class="col-md-12">
   <form class="form new-comment-form">
     <div class="form-group">
       <label for="comment-text">Leave a comment below</label>
-      <textarea class="form-input" id="comment-text" name="comment-text"></textarea>
+      <textarea class="form-input comment-text" id="comment-text" name="comment-text"></textarea>
     </div>
     <div class="form-group">
       <button id="editbutton" type="submit" class="btn btn-primary">Create</button>
@@ -31,6 +52,3 @@
   </div>
 </div>
 {{/each}}
-
-
-<script src="/js/reviews.js"></script>

@@ -29,8 +29,18 @@
   margin-right: 2%;
 }
 
-#comment-text {
-  padding: 1%
+.edit-form {
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.comment-text {
+  padding: 1% !important
+}
+
+.updateContent {
+  margin-left: 2%;
+  margin-right: 2%;
 }
 
 a {
